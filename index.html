@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NaiborLinks – AI Assistant</title>
+  <title>NaiborLinks – Compute. Delivered.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -11,7 +11,7 @@
 <body>
   <div class="app">
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <div class="sidebar-logo">
         <div class="logo-icon">⚡</div>
         <div class="logo-text">
@@ -21,26 +21,26 @@
       </div>
 
       <nav class="sidebar-nav">
-        <a href="#" class="nav-item" data-page="home">
-          <span class="nav-icon">🏠</span> Home
+        <a href="#" class="nav-item active" data-page="home">
+          <span class="nav-icon">🏠</span><span class="nav-label">Home</span>
         </a>
-        <a href="#" class="nav-item active" data-page="ai-assistant">
-          <span class="nav-icon">💬</span> AI Assistant
+        <a href="#" class="nav-item" data-page="ai-assistant">
+          <span class="nav-icon">💬</span><span class="nav-label">AI Assistant</span>
         </a>
         <a href="#" class="nav-item" data-page="build">
-          <span class="nav-icon">📦</span> Build
+          <span class="nav-icon">📦</span><span class="nav-label">Build</span>
         </a>
         <a href="#" class="nav-item" data-page="marketplace">
-          <span class="nav-icon">☁️</span> Compute Marketplace
+          <span class="nav-icon">☁️</span><span class="nav-label">Compute Marketplace</span>
         </a>
         <a href="#" class="nav-item" data-page="projects">
-          <span class="nav-icon">📁</span> My Projects
+          <span class="nav-icon">📁</span><span class="nav-label">My Projects</span>
         </a>
         <a href="#" class="nav-item" data-page="billing">
-          <span class="nav-icon">📊</span> Usage &amp; Billing
+          <span class="nav-icon">📊</span><span class="nav-label">Usage &amp; Billing</span>
         </a>
         <a href="#" class="nav-item" data-page="settings">
-          <span class="nav-icon">⚙️</span> Settings
+          <span class="nav-icon">⚙️</span><span class="nav-label">Settings</span>
         </a>
       </nav>
 
@@ -56,50 +56,119 @@
           <span class="status-dot"></span> Network Status
           <span class="status-text">All systems operational</span>
         </div>
-        <div class="user-badge">
-          <div class="user-avatar">👤</div>
-          <div class="user-info">
-            <strong>Guest User</strong>
-            <small>Demo Mode</small>
-          </div>
-        </div>
       </div>
     </aside>
+
+    <!-- Sidebar overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
     <!-- Main Content -->
     <main class="main">
       <!-- Header -->
       <header class="header">
-        <div class="header-search">
-          <span class="search-icon">🔍</span>
-          <input type="text" placeholder="Search projects, templates, or keywords..." class="search-input">
+        <div class="header-left">
+          <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="header-logo-mobile">
+            <span class="logo-icon-sm">⚡</span>
+            <span class="logo-text-sm">NA⚡BORLINKS</span>
+          </div>
+          <div class="header-search">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Search projects, templates, or keywords..." class="search-input">
+          </div>
         </div>
         <div class="header-actions">
-          <button class="notif-btn">🔔</button>
-          <div class="header-user">
+          <button class="notif-btn desktop-only">🔔</button>
+          <div class="header-user" id="headerUser">
             <span class="header-avatar">👤</span>
-            <span class="header-name">Guest User</span>
+            <span class="header-name desktop-only">Guest User</span>
+          </div>
+          <!-- Mobile user dropdown -->
+          <div class="user-dropdown" id="userDropdown">
+            <div class="dropdown-item">🔔 Notifications</div>
+            <div class="dropdown-item">⚙️ Settings</div>
+            <div class="dropdown-item">👤 Guest User</div>
           </div>
         </div>
       </header>
 
+      <!-- Dashboard / Home Page -->
+      <div class="page active" id="page-home">
+        <div class="page-scroll">
+          <div class="dashboard">
+            <!-- Hero -->
+            <div class="dash-hero">
+              <div class="dash-hero-text">
+                <h1>Global Compute.<br><span class="text-accent">One Intelligent Network.</span></h1>
+                <p>Distributed nodes. Unified infrastructure. Infinite possibilities.</p>
+              </div>
+              <div class="dash-hero-stats">
+                <div class="hero-badge online-badge">
+                  <span class="status-dot"></span> Network Online
+                  <small>All systems operational</small>
+                </div>
+                <div class="hero-numbers">
+                  <div class="hero-num"><strong>12</strong><small>Regions</small></div>
+                  <div class="hero-num"><strong>68</strong><small>Nodes</small></div>
+                  <div class="hero-num"><strong>500,000</strong><small>Compute Units</small></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Network Map placeholder -->
+            <div class="dash-section">
+              <h2>Network Map <small>Real-time global node activity</small></h2>
+              <div class="placeholder-img" data-src="images/network-map.png" data-alt="network-map.png">
+                <span class="placeholder-label">network-map.png</span>
+              </div>
+            </div>
+
+            <!-- Stats bar -->
+            <div class="stats-bar">
+              <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div><div class="stat-value">682,000 CU</div><div class="stat-label">Total Available Compute</div></div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">🌐</div>
+                <div><div class="stat-value">9 / 11</div><div class="stat-label">Global Nodes Online</div></div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div><div class="stat-value">$0.13 / CU</div><div class="stat-label">Avg Price (Selected)</div></div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">📡</div>
+                <div><div class="stat-value">42 ms</div><div class="stat-label">Network Latency (Avg.)</div></div>
+              </div>
+            </div>
+
+            <!-- Footer banner -->
+            <div class="dash-footer-banner">
+              <div class="banner-logo">⚡ NA⚡BORLINKS</div>
+              <div class="banner-tagline">COMPUTE &bull; AI &bull; ANYWHERE</div>
+              <div class="banner-cats">
+                <span>AI &amp; Machine Learning</span>
+                <span>Enterprise Solutions</span>
+                <span>Edge Computing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- AI Assistant Page -->
-      <div class="page page-ai-assistant active" id="page-ai-assistant">
+      <div class="page" id="page-ai-assistant">
         <div class="chat-container">
-          <!-- Mascot Banner -->
           <div class="chat-banner">
             <div class="mascot">🤖</div>
             <div class="mascot-bubble">
               I'm your NaiborLinks AI assistant. Let's get your compute!
             </div>
           </div>
-
-          <!-- Chat Messages -->
-          <div class="chat-messages" id="chatMessages">
-            <!-- Messages will be inserted here -->
-          </div>
-
-          <!-- Chat Input -->
+          <div class="chat-messages" id="chatMessages"></div>
           <div class="chat-input-area">
             <div class="chat-input-wrapper">
               <button class="attach-btn" title="Attach file">📎</button>
@@ -108,66 +177,86 @@
                 <span class="send-icon">➤</span>
               </button>
             </div>
-            <div class="chat-input-hint">
-              <span class="mode-indicator" id="modeIndicator">Demo Mode</span>
-              <button class="groq-toggle" id="groqToggle" title="Configure Groq API">⚡ Connect Groq</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Build Page -->
+      <div class="page" id="page-build">
+        <div class="page-scroll">
+          <div class="build-page">
+            <div class="build-header">
+              <small>BUILD PROJECT</small>
+              <h1>Define Your <span class="text-accent">Project</span></h1>
+              <p>Tell us what you want to build. Our AI will design the best solution for your goals.</p>
+            </div>
+            <div class="build-steps">
+              <div class="step active"><span class="step-num">1</span> Define</div>
+              <div class="step-line"></div>
+              <div class="step"><span class="step-num">2</span> Architecture</div>
+              <div class="step-line"></div>
+              <div class="step"><span class="step-num">3</span> Generate</div>
+              <div class="step-line"></div>
+              <div class="step"><span class="step-num">4</span> Test</div>
+              <div class="step-line"></div>
+              <div class="step"><span class="step-num">5</span> Deploy</div>
+            </div>
+            <div class="placeholder-img large" data-src="images/build-define.png" data-alt="build-define.png">
+              <span class="placeholder-label">build-define.png</span>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Placeholder pages -->
-      <div class="page page-placeholder" id="page-home">
-        <div class="placeholder-content">
-          <h1>Dashboard</h1>
-          <p>Network map and global compute stats will go here.</p>
+      <!-- Marketplace Page -->
+      <div class="page" id="page-marketplace">
+        <div class="page-scroll">
+          <div class="marketplace-page">
+            <div class="marketplace-header">
+              <small>DISCOVER &bull; TRAIN &bull; BUILD</small>
+              <h1>Model Training <span class="text-accent">Marketplace</span></h1>
+              <p>Find and use trusted, high-quality datasets to train your AI models.</p>
+            </div>
+            <div class="placeholder-img large" data-src="images/marketplace-browse.png" data-alt="marketplace-browse.png">
+              <span class="placeholder-label">marketplace-browse.png</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="page page-placeholder" id="page-build">
-        <div class="placeholder-content">
-          <h1>Build Your Project</h1>
-          <p>Step-by-step wizard: Define → Architecture → Generate → Test → Deploy</p>
+
+      <!-- My Projects Page -->
+      <div class="page" id="page-projects">
+        <div class="page-scroll">
+          <div class="placeholder-page">
+            <div class="placeholder-img large" data-src="images/my-projects.png" data-alt="my-projects.png">
+              <span class="placeholder-label">my-projects.png</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="page page-placeholder" id="page-marketplace">
-        <div class="placeholder-content">
-          <h1>Compute Marketplace</h1>
-          <p>Browse datasets, models, and compute resources.</p>
+
+      <!-- Usage & Billing Page -->
+      <div class="page" id="page-billing">
+        <div class="page-scroll">
+          <div class="placeholder-page">
+            <div class="placeholder-img large" data-src="images/usage-billing.png" data-alt="usage-billing.png">
+              <span class="placeholder-label">usage-billing.png</span>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="page page-placeholder" id="page-projects">
-        <div class="placeholder-content">
-          <h1>My Projects</h1>
-          <p>Your saved and active projects will appear here.</p>
-        </div>
-      </div>
-      <div class="page page-placeholder" id="page-billing">
-        <div class="placeholder-content">
-          <h1>Usage &amp; Billing</h1>
-          <p>Compute usage, invoices, and billing settings.</p>
-        </div>
-      </div>
-      <div class="page page-placeholder" id="page-settings">
-        <div class="placeholder-content">
-          <h1>Settings</h1>
-          <p>Account and workspace settings.</p>
+
+      <!-- Settings Page -->
+      <div class="page" id="page-settings">
+        <div class="page-scroll">
+          <div class="placeholder-page">
+            <div class="placeholder-img large" data-src="images/settings.png" data-alt="settings.png">
+              <span class="placeholder-label">settings.png</span>
+            </div>
+          </div>
         </div>
       </div>
     </main>
-  </div>
-
-  <!-- Groq API Key Modal -->
-  <div class="modal-overlay" id="groqModal">
-    <div class="modal">
-      <h3>Connect Groq API</h3>
-      <p>Enter your Groq API key to enable live AI responses. Get one free at <a href="https://console.groq.com" target="_blank">console.groq.com</a>.</p>
-      <input type="password" id="groqKeyInput" class="modal-input" placeholder="gsk_...">
-      <div class="modal-actions">
-        <button class="modal-btn secondary" id="groqCancel">Cancel</button>
-        <button class="modal-btn primary" id="groqSave">Connect</button>
-        <button class="modal-btn danger" id="groqDisconnect" style="display:none">Disconnect</button>
-      </div>
-    </div>
   </div>
 
   <script src="app.js"></script>
