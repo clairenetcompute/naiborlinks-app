@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NaiborLinks – AI Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">⚡</div>
+        <div class="logo-text">
+          <span class="logo-na">NA</span><span class="logo-bolt">⚡</span><span class="logo-bor">BOR</span><span class="logo-links">LINKS</span>
+          <div class="logo-tagline">COMPUTE &bull; AI &bull; ANYWHERE</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item" data-page="home">
+          <span class="nav-icon">🏠</span> Home
+        </a>
+        <a href="#" class="nav-item active" data-page="ai-assistant">
+          <span class="nav-icon">💬</span> AI Assistant
+        </a>
+        <a href="#" class="nav-item" data-page="build">
+          <span class="nav-icon">📦</span> Build
+        </a>
+        <a href="#" class="nav-item" data-page="marketplace">
+          <span class="nav-icon">☁️</span> Compute Marketplace
+        </a>
+        <a href="#" class="nav-item" data-page="projects">
+          <span class="nav-icon">📁</span> My Projects
+        </a>
+        <a href="#" class="nav-item" data-page="billing">
+          <span class="nav-icon">📊</span> Usage &amp; Billing
+        </a>
+        <a href="#" class="nav-item" data-page="settings">
+          <span class="nav-icon">⚙️</span> Settings
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="network-badge">
+          <div class="globe-icon">🌐</div>
+          <div class="network-info">
+            <strong>Global Compute Network</strong>
+            <small>Powered by a network of trusted data centers, enterprises, and infrastructure partners.</small>
+          </div>
+        </div>
+        <div class="network-status">
+          <span class="status-dot"></span> Network Status
+          <span class="status-text">All systems operational</span>
+        </div>
+        <div class="user-badge">
+          <div class="user-avatar">👤</div>
+          <div class="user-info">
+            <strong>Guest User</strong>
+            <small>Demo Mode</small>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Header -->
+      <header class="header">
+        <div class="header-search">
+          <span class="search-icon">🔍</span>
+          <input type="text" placeholder="Search projects, templates, or keywords..." class="search-input">
+        </div>
+        <div class="header-actions">
+          <button class="notif-btn">🔔</button>
+          <div class="header-user">
+            <span class="header-avatar">👤</span>
+            <span class="header-name">Guest User</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- AI Assistant Page -->
+      <div class="page page-ai-assistant active" id="page-ai-assistant">
+        <div class="chat-container">
+          <!-- Mascot Banner -->
+          <div class="chat-banner">
+            <div class="mascot">🤖</div>
+            <div class="mascot-bubble">
+              I'm your NaiborLinks AI assistant. Let's get your compute!
+            </div>
+          </div>
+
+          <!-- Chat Messages -->
+          <div class="chat-messages" id="chatMessages">
+            <!-- Messages will be inserted here -->
+          </div>
+
+          <!-- Chat Input -->
+          <div class="chat-input-area">
+            <div class="chat-input-wrapper">
+              <button class="attach-btn" title="Attach file">📎</button>
+              <input type="text" id="chatInput" class="chat-input" placeholder="Type your message or describe your project...">
+              <button id="sendBtn" class="send-btn" title="Send">
+                <span class="send-icon">➤</span>
+              </button>
+            </div>
+            <div class="chat-input-hint">
+              <span class="mode-indicator" id="modeIndicator">Demo Mode</span>
+              <button class="groq-toggle" id="groqToggle" title="Configure Groq API">⚡ Connect Groq</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder pages -->
+      <div class="page page-placeholder" id="page-home">
+        <div class="placeholder-content">
+          <h1>Dashboard</h1>
+          <p>Network map and global compute stats will go here.</p>
+        </div>
+      </div>
+      <div class="page page-placeholder" id="page-build">
+        <div class="placeholder-content">
+          <h1>Build Your Project</h1>
+          <p>Step-by-step wizard: Define → Architecture → Generate → Test → Deploy</p>
+        </div>
+      </div>
+      <div class="page page-placeholder" id="page-marketplace">
+        <div class="placeholder-content">
+          <h1>Compute Marketplace</h1>
+          <p>Browse datasets, models, and compute resources.</p>
+        </div>
+      </div>
+      <div class="page page-placeholder" id="page-projects">
+        <div class="placeholder-content">
+          <h1>My Projects</h1>
+          <p>Your saved and active projects will appear here.</p>
+        </div>
+      </div>
+      <div class="page page-placeholder" id="page-billing">
+        <div class="placeholder-content">
+          <h1>Usage &amp; Billing</h1>
+          <p>Compute usage, invoices, and billing settings.</p>
+        </div>
+      </div>
+      <div class="page page-placeholder" id="page-settings">
+        <div class="placeholder-content">
+          <h1>Settings</h1>
+          <p>Account and workspace settings.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Groq API Key Modal -->
+  <div class="modal-overlay" id="groqModal">
+    <div class="modal">
+      <h3>Connect Groq API</h3>
+      <p>Enter your Groq API key to enable live AI responses. Get one free at <a href="https://console.groq.com" target="_blank">console.groq.com</a>.</p>
+      <input type="password" id="groqKeyInput" class="modal-input" placeholder="gsk_...">
+      <div class="modal-actions">
+        <button class="modal-btn secondary" id="groqCancel">Cancel</button>
+        <button class="modal-btn primary" id="groqSave">Connect</button>
+        <button class="modal-btn danger" id="groqDisconnect" style="display:none">Disconnect</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
