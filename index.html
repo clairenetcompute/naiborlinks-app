@@ -19,7 +19,7 @@
         </div>
       </div>
       <nav class="sidebar-nav">
-        <a href="#" class="nav-item active" data-page="home"><span class="nav-icon">🏠</span><span class="nav-label">Home</span></a>
+        <a href="#" class="nav-item active" data-page="dashboard"><span class="nav-icon">🏠</span><span class="nav-label">Dashboard</span></a>
         <a href="#" class="nav-item" data-page="ai-assistant"><span class="nav-icon">💬</span><span class="nav-label">AI Assistant</span></a>
         <a href="#" class="nav-item" data-page="build"><span class="nav-icon">📦</span><span class="nav-label">Build</span></a>
         <a href="#" class="nav-item" data-page="marketplace"><span class="nav-icon">☁️</span><span class="nav-label">Compute Marketplace</span></a>
@@ -28,17 +28,8 @@
         <a href="#" class="nav-item" data-page="settings"><span class="nav-icon">⚙️</span><span class="nav-label">Settings</span></a>
       </nav>
       <div class="sidebar-footer">
-        <div class="network-badge">
-          <div class="globe-icon">🌐</div>
-          <div class="network-info">
-            <strong>Global Compute Network</strong>
-            <small>Powered by a network of trusted data centers, enterprises, and infrastructure partners.</small>
-          </div>
-        </div>
-        <div class="network-status">
-          <span class="status-dot"></span> Network Status
-          <span class="status-text">All systems operational</span>
-        </div>
+        <div class="network-badge"><div class="globe-icon">🌐</div><div class="network-info"><strong>Global Compute Network</strong><small>Powered by a network of trusted data centers, enterprises, and infrastructure partners.</small></div></div>
+        <div class="network-status"><span class="status-dot"></span> Network Status <span class="status-text">All systems operational</span></div>
       </div>
     </aside>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -48,56 +39,38 @@
         <div class="header-left">
           <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
           <div class="header-logo-mobile"><span class="logo-icon-sm">⚡</span><span class="logo-text-sm">NA⚡BORLINKS</span></div>
-          <div class="header-search">
-            <span class="search-icon">🔍</span>
-            <input type="text" placeholder="Search projects, templates, or keywords..." class="search-input">
-          </div>
+          <div class="header-search"><span class="search-icon">🔍</span><input type="text" placeholder="Search projects, templates, or keywords..." class="search-input"></div>
         </div>
         <div class="header-actions">
-          <button class="notif-btn desktop-only">🔔</button>
-          <div class="header-user" id="headerUser">
-            <span class="header-avatar">👤</span>
-            <span class="header-name desktop-only">Guest User</span>
-          </div>
-          <div class="user-dropdown" id="userDropdown">
-            <div class="dropdown-item">🔔 Notifications</div>
-            <div class="dropdown-item">⚙️ Settings</div>
-            <div class="dropdown-item">👤 Guest User</div>
-          </div>
+          <button class="notif-btn" id="notifBtn">🔔<span class="notif-badge" id="notifBadge" style="display:none">0</span></button>
+          <div class="header-user" id="headerUser"><span class="header-avatar">👤</span><span class="header-name desktop-only">Guest User</span></div>
+          <div class="user-dropdown" id="userDropdown"><div class="dropdown-item">⚙️ Settings</div><div class="dropdown-item">👤 Guest User</div></div>
         </div>
       </header>
 
-      <!-- ==================== DASHBOARD ==================== -->
-      <div class="page active" id="page-home">
+      <!-- ========== DASHBOARD ========== -->
+      <div class="page active" id="page-dashboard">
         <div class="page-scroll">
           <div class="dashboard">
             <div class="dash-hero">
-              <div class="dash-hero-text">
-                <h1>Global Compute.<br><span class="text-accent">One Intelligent Network.</span></h1>
-                <p>Distributed nodes. Unified infrastructure. Infinite possibilities.</p>
-              </div>
+              <div class="dash-hero-text"><h1>Global Compute.<br><span class="text-accent">One Intelligent Network.</span></h1><p>Distributed nodes. Unified infrastructure. Infinite possibilities.</p></div>
               <div class="dash-hero-stats">
-                <div class="hero-badge"><span class="status-dot"></span> Network Online <small>All systems operational</small></div>
-                <div class="hero-numbers">
-                  <div class="hero-num"><strong>12</strong><small>Regions</small></div>
-                  <div class="hero-num"><strong>68</strong><small>Nodes</small></div>
-                  <div class="hero-num"><strong>500,000</strong><small>Compute Units</small></div>
-                </div>
+                <div class="hero-badge"><span class="status-dot"></span> Network Online</div>
+                <div class="hero-numbers"><div class="hero-num"><strong>12</strong><small>Regions</small></div><div class="hero-num"><strong>68</strong><small>Nodes</small></div><div class="hero-num"><strong>500,000</strong><small>Compute Units</small></div></div>
               </div>
+            </div>
+
+            <!-- Active Jobs -->
+            <div class="active-jobs-section" id="activeJobsSection" style="display:none">
+              <h2>🚀 Active Jobs</h2>
+              <div class="active-jobs-list" id="activeJobsList"></div>
             </div>
 
             <div class="dash-body">
               <div class="dash-main-col">
                 <div class="card map-card">
-                  <div class="card-header">
-                    <h2>Network Map</h2>
-                    <small>Real-time global node activity</small>
-                    <div class="map-filters">
-                      <button class="filter-btn active" data-filter="all">All Regions</button>
-                      <button class="filter-btn" data-filter="online">Online</button>
-                      <button class="filter-btn" data-filter="limited">Limited</button>
-                      <button class="filter-btn" data-filter="offline">Offline</button>
-                    </div>
+                  <div class="card-header"><h2>Network Map</h2><small>Real-time global node activity</small>
+                    <div class="map-filters"><button class="filter-btn active" data-filter="all">All Regions</button><button class="filter-btn" data-filter="online">Online</button><button class="filter-btn" data-filter="limited">Limited</button><button class="filter-btn" data-filter="offline">Offline</button></div>
                   </div>
                   <div class="map-container" id="networkMap"></div>
                 </div>
@@ -108,195 +81,203 @@
                   <div class="stat-card"><div class="stat-icon">📡</div><div><div class="stat-value" id="statLatency">42 ms</div><div class="stat-label">Network Latency (Avg.)</div><div class="stat-change up" id="statLatencyChange">▲ 17.6%</div></div></div>
                 </div>
               </div>
-
               <div class="dash-side-col">
-                <div class="card compute-card">
-                  <div class="card-header"><h3>⚡ Estimated Compute</h3></div>
-                  <div class="compute-big" id="computeBig">500,000</div>
-                  <div class="compute-unit">Compute Units (CU)</div>
-                  <div class="compute-row"><span>Estimated Completion Time</span><strong id="estTime">6h 24m - 12h 18m</strong></div>
-                  <div class="compute-row"><span>Estimated Cost</span><strong id="estCost">$4,200 - $7,800</strong></div>
-                  <button class="btn-outline" onclick="showPopover('detailBreakdown')">View Detailed Breakdown →</button>
-                </div>
-
-                <div class="card select-card">
-                  <div class="card-header"><h3>📍 Select Nodes</h3><small><span id="selectedCount">12</span> nodes selected</small></div>
-                  <div class="select-rows">
-                    <div class="select-row"><span>Total Compute Units</span><strong>500,000</strong></div>
-                    <div class="select-row"><span>Estimated Completion</span><strong>6h 24m - 12h 18m</strong></div>
-                    <div class="select-row"><span>Estimated Cost</span><strong>$4,200 - $7,800</strong></div>
-                    <div class="select-row"><span>Estimated Price / CU</span><strong>$0.11 - $0.16</strong></div>
-                  </div>
-                  <button class="btn-primary full-width" onclick="navigateTo('build')">Confirm &amp; Launch →</button>
-                </div>
-
-                <div class="card actions-card">
-                  <h3>⚡ Quick Actions</h3>
-                  <div class="action-list">
-                    <div class="action-item" onclick="navigateTo('build')">🚀 <div><strong>Run New Job</strong><small>Deploy compute task</small></div></div>
-                    <div class="action-item" onclick="navigateTo('marketplace')">🛒 <div><strong>View Marketplace</strong><small>Browse available models</small></div></div>
-                    <div class="action-item" onclick="showPopover('nodeAccess')">🖥️ <div><strong>Access Nodes</strong><small>Manage your network</small></div></div>
-                    <div class="action-item" onclick="navigateTo('billing')">📈 <div><strong>View Analytics</strong><small>Performance &amp; usage</small></div></div>
-                  </div>
-                </div>
-
-                <div class="card alloc-card">
-                  <h3>Node Allocation</h3>
-                  <div class="alloc-slider-wrap">
-                    <input type="range" min="1" max="30" value="12" class="alloc-slider" id="nodeSlider">
-                    <div class="alloc-label"><span id="nodeSliderVal">12</span> nodes</div>
-                  </div>
-                  <small class="alloc-hint">Recommended: 12-16 nodes for optimal speed and cost efficiency.</small>
-                </div>
+                <div class="card compute-card"><div class="card-header"><h3>⚡ Estimated Compute</h3></div><div class="compute-big">500,000</div><div class="compute-unit">Compute Units (CU)</div><div class="compute-row"><span>Est. Completion</span><strong>6h 24m - 12h 18m</strong></div><div class="compute-row"><span>Est. Cost</span><strong>$4,200 - $7,800</strong></div><button class="btn-outline" onclick="showPopover('detailBreakdown')">View Breakdown →</button></div>
+                <div class="card select-card"><div class="card-header"><h3>📍 Select Nodes</h3><small><span id="selectedCount">12</span> nodes selected</small></div><div class="select-rows"><div class="select-row"><span>Total CU</span><strong>500,000</strong></div><div class="select-row"><span>Est. Cost</span><strong>$4,200 - $7,800</strong></div><div class="select-row"><span>Price / CU</span><strong>$0.11 - $0.16</strong></div></div><button class="btn-primary full-width" onclick="navigateTo('build')">Confirm &amp; Launch →</button></div>
+                <div class="card actions-card"><h3>⚡ Quick Actions</h3><div class="action-list"><div class="action-item" onclick="navigateTo('build')">🚀 <div><strong>Run New Job</strong><small>Deploy compute task</small></div></div><div class="action-item" onclick="navigateTo('marketplace')">🛒 <div><strong>View Marketplace</strong><small>Browse models</small></div></div><div class="action-item" onclick="showPopover('nodeAccess')">🖥️ <div><strong>Access Nodes</strong><small>Manage network</small></div></div><div class="action-item" onclick="navigateTo('billing')">📈 <div><strong>View Analytics</strong><small>Performance</small></div></div></div></div>
+                <div class="card alloc-card"><h3>Node Allocation</h3><div class="alloc-slider-wrap"><input type="range" min="1" max="30" value="12" class="alloc-slider" id="nodeSlider"><div class="alloc-label"><span id="nodeSliderVal">12</span> nodes</div></div><small class="alloc-hint">Recommended: 12-16 nodes for optimal speed and cost efficiency.</small></div>
               </div>
             </div>
 
-            <div class="dash-footer-banner">
-              <div class="banner-logo">⚡ NA⚡BORLINKS</div>
-              <div class="banner-tagline">COMPUTE &bull; AI &bull; ANYWHERE</div>
-              <div class="banner-desc">NaiborLinks delivers high-performance distributed compute, AI, and data infrastructure — all in one network.</div>
-              <div class="banner-cats">
-                <div class="banner-cat"><span>🧠</span><strong>AI &amp; Machine Learning</strong><small>Train • Infer • Scale</small></div>
-                <div class="banner-cat"><span>🛡️</span><strong>Enterprise Solutions</strong><small>Secure • Compliant • Reliable</small></div>
-                <div class="banner-cat"><span>⚡</span><strong>Edge Computing</strong><small>Low Latency • High Performance</small></div>
-              </div>
-              <button class="btn-outline light">Learn More →</button>
-            </div>
+            <div class="dash-footer-banner"><div class="banner-logo">⚡ NA⚡BORLINKS</div><div class="banner-tagline">COMPUTE &bull; AI &bull; ANYWHERE</div><div class="banner-desc">NaiborLinks delivers high-performance distributed compute, AI, and data infrastructure — all in one network.</div><div class="banner-cats"><div class="banner-cat"><span>🧠</span><strong>AI &amp; ML</strong><small>Train • Infer • Scale</small></div><div class="banner-cat"><span>🛡️</span><strong>Enterprise</strong><small>Secure • Compliant</small></div><div class="banner-cat"><span>⚡</span><strong>Edge</strong><small>Low Latency</small></div></div></div>
           </div>
         </div>
       </div>
 
-      <!-- ==================== AI ASSISTANT ==================== -->
+      <!-- ========== AI ASSISTANT ========== -->
       <div class="page" id="page-ai-assistant">
         <div class="chat-container">
           <div class="chat-banner"><div class="mascot">🤖</div><div class="mascot-bubble">I'm your NaiborLinks AI assistant. Let's get your compute!</div></div>
           <div class="chat-messages" id="chatMessages"></div>
-          <div class="chat-input-area">
-            <div class="chat-input-wrapper">
-              <button class="attach-btn" title="Attach file">📎</button>
-              <input type="text" id="chatInput" class="chat-input" placeholder="Type your message or describe your project...">
-              <button id="sendBtn" class="send-btn" title="Send"><span class="send-icon">➤</span></button>
-            </div>
-          </div>
+          <div class="chat-input-area"><div class="chat-input-wrapper"><button class="attach-btn">📎</button><input type="text" id="chatInput" class="chat-input" placeholder="Type your message or describe your project..."><button id="sendBtn" class="send-btn"><span class="send-icon">➤</span></button></div></div>
         </div>
       </div>
 
-      <!-- ==================== BUILD ==================== -->
+      <!-- ========== BUILD WIZARD ========== -->
       <div class="page" id="page-build">
         <div class="page-scroll">
           <div class="build-page">
-            <div class="build-header"><small>BUILD PROJECT</small><h1>Define Your <span class="text-accent">Project</span></h1><p>Tell us what you want to build. Our AI will design the best solution for your goals.</p></div>
-            <div class="build-steps">
-              <div class="step active"><span class="step-num">1</span> Define</div><div class="step-line"></div>
-              <div class="step"><span class="step-num">2</span> Architecture</div><div class="step-line"></div>
-              <div class="step"><span class="step-num">3</span> Generate</div><div class="step-line"></div>
-              <div class="step"><span class="step-num">4</span> Test</div><div class="step-line"></div>
-              <div class="step"><span class="step-num">5</span> Deploy</div>
+            <div class="build-steps" id="buildSteps">
+              <div class="step active" data-step="1"><span class="step-num">1</span> Define</div><div class="step-line"></div>
+              <div class="step" data-step="2"><span class="step-num">2</span> Architecture</div><div class="step-line"></div>
+              <div class="step" data-step="3"><span class="step-num">3</span> Generate</div><div class="step-line"></div>
+              <div class="step" data-step="4"><span class="step-num">4</span> Test</div><div class="step-line"></div>
+              <div class="step" data-step="5"><span class="step-num">5</span> Deploy</div>
             </div>
-            <div class="build-form">
-              <div class="form-group"><label>Project Name <small>(optional)</small></label><input type="text" class="form-input" placeholder="Give your project a name..."></div>
-              <div class="form-group"><label>Describe your project</label><textarea class="form-textarea" placeholder="I want to train a custom AI model to..."></textarea></div>
-              <div class="form-group"><label>Project Type</label>
-                <div class="chip-group"><span class="chip active">🤖 Machine Learning</span><span class="chip">📊 Data Processing</span><span class="chip">🌐 Web Application</span><span class="chip">&lt;/&gt; Custom Project</span></div>
+
+            <!-- Step 1: Define -->
+            <div class="wizard-step active" id="wizStep1">
+              <div class="build-header"><small>BUILD PROJECT</small><h1>Define Your <span class="text-accent">Project</span></h1><p>Tell us what you want to build. Our AI will design the best solution.</p></div>
+              <div class="build-form">
+                <div class="form-group"><label>Project Name</label><input type="text" class="form-input" id="projName" placeholder="e.g. MRI Analysis AI" value="MRI Analysis AI"></div>
+                <div class="form-group"><label>Describe your project</label><textarea class="form-textarea" id="projDesc" placeholder="I want to train a custom AI model to...">I want to train a custom AI model to analyze MRI scans and classify abnormalities. I need high accuracy and fast training.</textarea></div>
+                <div class="form-group"><label>Project Type</label><div class="chip-group" data-field="projType"><span class="chip active" data-val="ml">🤖 Machine Learning</span><span class="chip" data-val="dp">📊 Data Processing</span><span class="chip" data-val="web">🌐 Web Application</span><span class="chip" data-val="custom">&lt;/&gt; Custom</span></div></div>
+                <div class="form-group"><label>Preferred Framework</label><div class="chip-group" data-field="projFramework"><span class="chip active" data-val="pytorch">🔥 PyTorch</span><span class="chip" data-val="tf">🧪 TensorFlow</span><span class="chip" data-val="jax">📐 JAX</span><span class="chip" data-val="other">… Other</span></div></div>
+                <div class="form-group"><label>Goals</label><div class="chip-group multi" data-field="projGoals"><span class="chip active">✅ High accuracy</span><span class="chip active">✅ Fast training</span><span class="chip">Cost efficient</span><span class="chip">Scalable</span></div></div>
+                <div class="form-actions"><button class="btn-outline" onclick="navigateTo('ai-assistant')">⚡ Use AI to suggest setup</button><button class="btn-primary" onclick="wizardNext(2)">Next: Architecture →</button></div>
               </div>
-              <div class="form-group"><label>Preferred Framework</label>
-                <div class="chip-group"><span class="chip active">🔥 PyTorch</span><span class="chip">🧪 TensorFlow</span><span class="chip">📐 JAX</span><span class="chip">… Other</span></div>
+            </div>
+
+            <!-- Step 2: Architecture -->
+            <div class="wizard-step" id="wizStep2">
+              <div class="build-header"><small>BUILD PROJECT</small><h1>AI-Generated <span class="text-accent">System Architecture</span></h1><p>Your project has been translated into an optimized infrastructure and software architecture.</p></div>
+              <div class="arch-layout">
+                <div class="arch-main">
+                  <div class="card"><h3>System Architecture Diagram</h3><small>End-to-end pipeline for training and deploying your model.</small>
+                    <div class="arch-pipeline">
+                      <div class="arch-stage"><div class="arch-icon">📥</div><strong>Data Ingestion</strong><small>MRI scans (DICOM)<br>Data validation<br>Metadata extraction</small><div class="arch-tag">2 TB Dataset</div></div>
+                      <div class="arch-arrow">→</div>
+                      <div class="arch-stage"><div class="arch-icon">⚙️</div><strong>Preprocessing</strong><small>Image normalization<br>Noise reduction<br>Augmentation</small><div class="arch-tag">CPU + RAM</div></div>
+                      <div class="arch-arrow">→</div>
+                      <div class="arch-stage highlight"><div class="arch-icon">🖥️</div><strong>Training Cluster</strong><small>PyTorch<br>Distributed training<br>Mixed precision</small><div class="arch-tag">8 × NVIDIA H100<br>(80 GB each)</div></div>
+                      <div class="arch-arrow">→</div>
+                      <div class="arch-stage"><div class="arch-icon">💾</div><strong>Model Storage</strong><small>Checkpoints<br>Model artifacts<br>Version control</small><div class="arch-tag">1.5 TB NVMe</div></div>
+                      <div class="arch-arrow">→</div>
+                      <div class="arch-stage"><div class="arch-icon">📊</div><strong>Evaluation</strong><small>Accuracy metrics<br>Model validation<br>Deploy package</small><div class="arch-tag">GPU + Storage</div></div>
+                    </div>
+                  </div>
+                  <div class="card"><h3>Network &amp; Infrastructure</h3>
+                    <div class="infra-grid"><div class="infra-item">🔒 Secure VPC Networking</div><div class="infra-item">🛡️ Encryption In Transit &amp; At Rest</div><div class="infra-item">⚖️ Load Balancer &amp; Auto Scaling</div><div class="infra-item">📈 Monitoring (CloudWatch / Prometheus)</div></div>
+                  </div>
+                  <div class="card"><h3>Compute Resources</h3>
+                    <div class="resource-grid">
+                      <div class="resource-item"><strong>8 × NVIDIA H100 GPUs</strong><small>80 GB each</small><div>Total GPU Memory: <strong>640 GB</strong></div></div>
+                      <div class="resource-item"><strong>1.5 TB NVMe</strong><small>High-speed storage</small><div>For checkpoints &amp; data</div></div>
+                      <div class="resource-item"><strong>11 ms latency</strong><small>Boston Data Center</small><div>86 GPUs available</div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="arch-sidebar">
+                  <div class="card"><h3>📋 Project Overview</h3><div class="overview-row"><span>Project Name</span><strong id="archProjName">MRI Analysis AI</strong></div><div class="overview-row"><span>Project Type</span><strong>Machine Learning</strong></div><div class="overview-row"><span>Framework</span><strong>PyTorch</strong></div><div class="overview-row"><span>Training Goal</span><strong>High accuracy + fast</strong></div><div class="overview-row"><span>Dataset Size</span><strong>2 TB</strong></div></div>
+                  <div class="card cost-card"><h3>💰 Estimated Cost</h3><div class="cost-big">$14.00<small>/hour</small></div><div class="cost-rows"><div class="cost-row"><span>Compute (8 × H100)</span><span>$11.20</span></div><div class="cost-row"><span>Storage (1.5 TB)</span><span>$1.34</span></div><div class="cost-row"><span>Networking</span><span>$0.96</span></div><div class="cost-row"><span>Overhead</span><span>$0.50</span></div></div><div class="cost-est">Est. training time: <strong>5 – 7 days</strong></div></div>
+                  <button class="btn-primary full-width" onclick="wizardNext(3)">Generate Project →</button>
+                  <button class="btn-outline full-width" onclick="wizardNext(1)" style="margin-top:8px">← Back to Define</button>
+                </div>
               </div>
-              <div class="form-group"><label>Goals &amp; Priorities</label>
-                <div class="chip-group"><span class="chip active">✅ High accuracy</span><span class="chip active">✅ Fast training time</span><span class="chip">Cost efficient</span><span class="chip">Scalable</span></div>
+            </div>
+
+            <!-- Step 3: Generate -->
+            <div class="wizard-step" id="wizStep3">
+              <div class="build-header"><small>PROJECT GENERATION</small><h1>Your Project is Being <span class="text-accent">Generated</span></h1><p>NaiborLinks is creating your application, environment, and infrastructure configuration.</p></div>
+              <div class="gen-layout">
+                <div class="gen-main">
+                  <div class="card"><h3>Generation Progress</h3>
+                    <div class="gen-overall"><span>Overall Progress</span><div class="progress-bar"><div class="progress-fill" id="genOverall" style="width:0%"></div></div><span class="progress-pct" id="genOverallPct">0%</span></div>
+                    <div class="gen-steps" id="genStepsList">
+                      <div class="gen-step-item" data-genstep="0"><span class="gen-step-icon">📁</span><div><strong>Creating project repository</strong><small>Setting up codebase and structure</small></div><div class="gen-step-status">Pending</div><div class="progress-bar sm"><div class="progress-fill" style="width:0%"></div></div></div>
+                      <div class="gen-step-item" data-genstep="1"><span class="gen-step-icon">🔧</span><div><strong>Configuring environment</strong><small>Python, PyTorch, dependencies, containers</small></div><div class="gen-step-status">Pending</div><div class="progress-bar sm"><div class="progress-fill" style="width:0%"></div></div></div>
+                      <div class="gen-step-item" data-genstep="2"><span class="gen-step-icon">📊</span><div><strong>Building data pipeline</strong><small>Data loaders, preprocessing, augmentation</small></div><div class="gen-step-status">Pending</div><div class="progress-bar sm"><div class="progress-fill" style="width:0%"></div></div></div>
+                      <div class="gen-step-item" data-genstep="3"><span class="gen-step-icon">🧠</span><div><strong>Generating training scripts</strong><small>Model architecture, training loop, checkpoints</small></div><div class="gen-step-status">Pending</div><div class="progress-bar sm"><div class="progress-fill" style="width:0%"></div></div></div>
+                      <div class="gen-step-item" data-genstep="4"><span class="gen-step-icon">✅</span><div><strong>Setting up evaluation framework</strong><small>Metrics, validation, testing utilities</small></div><div class="gen-step-status">Pending</div><div class="progress-bar sm"><div class="progress-fill" style="width:0%"></div></div></div>
+                      <div class="gen-step-item" data-genstep="5"><span class="gen-step-icon">🚀</span><div><strong>Creating deployment configuration</strong><small>Docker, Kubernetes, resource settings</small></div><div class="gen-step-status">Pending</div><div class="progress-bar sm"><div class="progress-fill" style="width:0%"></div></div></div>
+                      <div class="gen-step-item" data-genstep="6"><span class="gen-step-icon">📄</span><div><strong>Finalizing documentation</strong><small>README, usage guide, next steps</small></div><div class="gen-step-status">Pending</div><div class="progress-bar sm"><div class="progress-fill" style="width:0%"></div></div></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="gen-sidebar">
+                  <div class="card"><h3>🖥️ Project Preview</h3>
+                    <div class="file-tree"><pre>mri-analysis-ai/
+├── src/
+│   ├── train.py
+│   ├── model.py
+│   └── dataset.py
+├── configs/
+│   └── config.yaml
+├── requirements.txt
+├── Dockerfile
+└── README.md</pre></div>
+                    <div class="preview-tags"><span class="tag">PyTorch</span><span class="tag">CUDA 12.1</span><span class="tag">Python 3.10</span></div>
+                  </div>
+                  <div class="card"><h3>⚡ Compute Allocation</h3><div class="alloc-item">🖥️ <strong>8 × NVIDIA H100</strong><small>80 GB each</small></div><div class="alloc-item">🧮 <strong>128 GB / node</strong><small>High-speed interconnect</small></div><div class="alloc-item">💾 <strong>1.5 TB NVMe</strong><small>Fast checkpointing</small></div></div>
+                </div>
               </div>
-              <div class="form-actions">
-                <button class="btn-outline" onclick="navigateTo('ai-assistant')">⚡ Use AI to suggest a complete setup</button>
-                <button class="btn-primary">Next: Architecture →</button>
+            </div>
+
+            <!-- Step 4: Confirmation -->
+            <div class="wizard-step" id="wizStep4">
+              <div class="confirm-page">
+                <div class="confirm-icon">✅</div>
+                <h1>Project <span class="text-accent">Generated Successfully!</span></h1>
+                <p>Your MRI Analysis AI project is ready. The environment, training scripts, and deployment config have been created.</p>
+                <div class="confirm-summary card">
+                  <div class="confirm-row"><span>Project</span><strong>MRI Analysis AI</strong></div>
+                  <div class="confirm-row"><span>Framework</span><strong>PyTorch + CUDA 12.1</strong></div>
+                  <div class="confirm-row"><span>Compute</span><strong>8 × NVIDIA H100 (80 GB)</strong></div>
+                  <div class="confirm-row"><span>Location</span><strong>Boston Data Center</strong></div>
+                  <div class="confirm-row"><span>Est. Rate</span><strong>$14.00/hr</strong></div>
+                  <div class="confirm-row"><span>Est. Training</span><strong>5 – 7 days</strong></div>
+                  <div class="confirm-row"><span>Est. Total</span><strong>$1,680 – $2,352</strong></div>
+                </div>
+                <div class="confirm-actions">
+                  <button class="btn-primary" onclick="launchJob()">🚀 Launch Training Job</button>
+                  <button class="btn-outline" onclick="navigateTo('projects')">View in My Projects</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5: Launched -->
+            <div class="wizard-step" id="wizStep5">
+              <div class="confirm-page">
+                <div class="confirm-icon">🚀</div>
+                <h1>Job <span class="text-accent">Launched!</span></h1>
+                <p>Your training job is now running on 8 × H100 GPUs in the Boston Data Center. Track progress from the notification bell or the Dashboard.</p>
+                <div class="confirm-actions">
+                  <button class="btn-primary" onclick="navigateTo('dashboard')">← Back to Dashboard</button>
+                  <button class="btn-outline" onclick="navigateTo('projects')">View in My Projects</button>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- ==================== MARKETPLACE ==================== -->
+      <!-- ========== MARKETPLACE ========== -->
       <div class="page" id="page-marketplace">
         <div class="page-scroll">
           <div class="marketplace-page">
-            <div class="marketplace-header">
-              <small>DISCOVER &bull; TRAIN &bull; BUILD</small>
-              <h1>Model Training <span class="text-accent">Marketplace</span></h1>
-              <p>Find and use trusted, high-quality datasets to train your AI models. Choose from a wide range of categories and verticals to build more intelligent, domain-specific models.</p>
-            </div>
-            <div class="mp-search-wrap">
-              <div class="mp-search-bar">
-                <span class="search-icon">🔍</span>
-                <input type="text" id="mpSearchInput" class="mp-search-input" placeholder="Search for datasets, domains, or keywords..." autocomplete="off">
-                <button class="btn-primary mp-search-btn">Search</button>
-              </div>
-              <div class="mp-search-results" id="mpSearchResults"></div>
-            </div>
-
-            <h2 class="mp-section-title">Browse Categories</h2>
-            <p class="mp-section-sub">Explore curated categories to find the perfect dataset for your training needs.</p>
+            <div class="marketplace-header"><small>DISCOVER &bull; TRAIN &bull; BUILD</small><h1>Model Training <span class="text-accent">Marketplace</span></h1><p>Find trusted datasets to train your AI models.</p></div>
+            <div class="mp-search-wrap"><div class="mp-search-bar"><span class="search-icon">🔍</span><input type="text" id="mpSearchInput" class="mp-search-input" placeholder="Search for datasets, domains, or keywords..." autocomplete="off"><button class="btn-primary mp-search-btn">Search</button></div><div class="mp-search-results" id="mpSearchResults"></div></div>
+            <h2 class="mp-section-title">Browse Categories</h2><p class="mp-section-sub">Explore curated categories for your training needs.</p>
             <div class="mp-categories">
-              <div class="mp-cat-card"><div class="mp-cat-icon">&lt;/&gt;</div><div><strong>Technology &amp; Software</strong><small>Programming, DevOps, SaaS, IT Operations, Cloud Infra</small><span class="mp-cat-count">1,240+ datasets</span></div></div>
-              <div class="mp-cat-card"><div class="mp-cat-icon">❤️</div><div><strong>Healthcare &amp; Life Sciences</strong><small>Medical Imaging, EHR, Drug Discovery, Biotech</small><span class="mp-cat-count">980+ datasets</span></div></div>
-              <div class="mp-cat-card"><div class="mp-cat-icon">🏦</div><div><strong>Finance &amp; Fintech</strong><small>Fraud Detection, Risk, Trading, Compliance</small><span class="mp-cat-count">1,130+ datasets</span></div></div>
-              <div class="mp-cat-card"><div class="mp-cat-icon">🛒</div><div><strong>Retail &amp; E-Commerce</strong><small>Product Catalogs, Customer Behavior, Pricing</small><span class="mp-cat-count">870+ datasets</span></div></div>
-              <div class="mp-cat-card"><div class="mp-cat-icon">⚙️</div><div><strong>Manufacturing &amp; Industrial</strong><small>IoT, Quality Control, Supply Chain, Predictive Maintenance</small><span class="mp-cat-count">760+ datasets</span></div></div>
-              <div class="mp-cat-card"><div class="mp-cat-icon">🎓</div><div><strong>Education &amp; Learning</strong><small>Curriculum, Tutoring, Assessments, LMS, Research</small><span class="mp-cat-count">540+ datasets</span></div></div>
+              <div class="mp-cat-card"><div class="mp-cat-icon">&lt;/&gt;</div><div><strong>Technology &amp; Software</strong><small>Programming, DevOps, SaaS, Cloud Infra</small><span class="mp-cat-count">1,240+ datasets</span></div></div>
+              <div class="mp-cat-card"><div class="mp-cat-icon">❤️</div><div><strong>Healthcare &amp; Life Sciences</strong><small>Medical Imaging, EHR, Drug Discovery</small><span class="mp-cat-count">980+ datasets</span></div></div>
+              <div class="mp-cat-card"><div class="mp-cat-icon">🏦</div><div><strong>Finance &amp; Fintech</strong><small>Fraud Detection, Risk, Trading</small><span class="mp-cat-count">1,130+ datasets</span></div></div>
+              <div class="mp-cat-card"><div class="mp-cat-icon">🛒</div><div><strong>Retail &amp; E-Commerce</strong><small>Product Catalogs, Pricing</small><span class="mp-cat-count">870+ datasets</span></div></div>
+              <div class="mp-cat-card"><div class="mp-cat-icon">⚙️</div><div><strong>Manufacturing &amp; Industrial</strong><small>IoT, Quality Control, Supply Chain</small><span class="mp-cat-count">760+ datasets</span></div></div>
+              <div class="mp-cat-card"><div class="mp-cat-icon">🎓</div><div><strong>Education &amp; Learning</strong><small>Curriculum, Assessments, LMS</small><span class="mp-cat-count">540+ datasets</span></div></div>
             </div>
-
-            <div class="mp-featured-header">
-              <h2 class="mp-section-title">⭐ Featured Datasets</h2>
-              <a href="#" class="mp-view-all">View All →</a>
-            </div>
+            <div class="mp-featured-header"><h2 class="mp-section-title">⭐ Featured Datasets</h2><a href="#" class="mp-view-all">View All →</a></div>
             <div class="mp-featured">
-              <div class="mp-ds-card">
-                <div class="placeholder-img mp-ds-img" data-src="images/dataset-chest-xray.jpg" data-alt="dataset-chest-xray.jpg"><span class="placeholder-label">dataset-chest-xray.jpg</span></div>
-                <div class="mp-ds-info">
-                  <strong>ChestX-ray14</strong><small>Healthcare</small>
-                  <p>Large-scale X-ray images for medical imaging models.</p>
-                  <div class="mp-ds-meta"><span>📊 112K records</span><span>📄 PNG</span><span>🌐 Public</span></div>
-                  <button class="btn-primary small">View Dataset →</button>
-                </div>
-              </div>
-              <div class="mp-ds-card">
-                <div class="placeholder-img mp-ds-img" data-src="images/dataset-financial-sentiment.jpg" data-alt="dataset-financial-sentiment.jpg"><span class="placeholder-label">dataset-financial-sentiment.jpg</span></div>
-                <div class="mp-ds-info">
-                  <strong>Financial Sentiment 2024</strong><small>Finance</small>
-                  <p>News and social media sentiment data for financial markets.</p>
-                  <div class="mp-ds-meta"><span>📊 250K records</span><span>📄 CSV</span><span>🌐 Public</span></div>
-                  <button class="btn-primary small">View Dataset →</button>
-                </div>
-              </div>
-              <div class="mp-ds-card">
-                <div class="placeholder-img mp-ds-img" data-src="images/dataset-autonomous-driving.jpg" data-alt="dataset-autonomous-driving.jpg"><span class="placeholder-label">dataset-autonomous-driving.jpg</span></div>
-                <div class="mp-ds-info">
-                  <strong>Autonomous Driving</strong><small>Automotive</small>
-                  <p>Labeled street scenes for self-driving model training.</p>
-                  <div class="mp-ds-meta"><span>📊 1.2M records</span><span>📄 JPEG</span><span>🔒 Private</span></div>
-                  <button class="btn-primary small">View Dataset →</button>
-                </div>
-              </div>
+              <div class="mp-ds-card"><div class="placeholder-img mp-ds-img" data-src="images/dataset-chest-xray.jpg" data-alt="dataset-chest-xray.jpg"><span class="placeholder-label">dataset-chest-xray.jpg</span></div><div class="mp-ds-info"><strong>ChestX-ray14</strong><small>Healthcare</small><p>Large-scale X-ray images for medical imaging models.</p><div class="mp-ds-meta"><span>📊 112K records</span><span>📄 PNG</span><span>🌐 Public</span></div><button class="btn-primary small">View Dataset →</button></div></div>
+              <div class="mp-ds-card"><div class="placeholder-img mp-ds-img" data-src="images/dataset-financial-sentiment.jpg" data-alt="dataset-financial-sentiment.jpg"><span class="placeholder-label">dataset-financial-sentiment.jpg</span></div><div class="mp-ds-info"><strong>Financial Sentiment 2024</strong><small>Finance</small><p>Sentiment data for financial markets.</p><div class="mp-ds-meta"><span>📊 250K records</span><span>📄 CSV</span><span>🌐 Public</span></div><button class="btn-primary small">View Dataset →</button></div></div>
+              <div class="mp-ds-card"><div class="placeholder-img mp-ds-img" data-src="images/dataset-autonomous-driving.jpg" data-alt="dataset-autonomous-driving.jpg"><span class="placeholder-label">dataset-autonomous-driving.jpg</span></div><div class="mp-ds-info"><strong>Autonomous Driving</strong><small>Automotive</small><p>Labeled street scenes for self-driving models.</p><div class="mp-ds-meta"><span>📊 1.2M records</span><span>📄 JPEG</span><span>🔒 Private</span></div><button class="btn-primary small">View Dataset →</button></div></div>
             </div>
-
-            <div class="mp-cta-banner">
-              <span class="mp-cta-icon">💬</span>
-              <div><strong>Need help or want to submit a request?</strong><p>Access the AI Chatbot anytime for assistance, or create a custom training set.</p></div>
-              <button class="btn-outline" onclick="navigateTo('ai-assistant')">Open Chat →</button>
-            </div>
+            <div class="mp-cta-banner"><span class="mp-cta-icon">💬</span><div><strong>Need help?</strong><p>Access the AI Chatbot for assistance or custom training sets.</p></div><button class="btn-outline" onclick="navigateTo('ai-assistant')">Open Chat →</button></div>
           </div>
         </div>
       </div>
 
-      <!-- ==================== OTHER PAGES ==================== -->
+      <!-- ========== OTHER PAGES ========== -->
       <div class="page" id="page-projects"><div class="page-scroll"><div class="placeholder-page"><div class="placeholder-center"><h1>📁 My Projects</h1><p>Your saved and active projects will appear here.</p></div></div></div></div>
       <div class="page" id="page-billing"><div class="page-scroll"><div class="placeholder-page"><div class="placeholder-center"><h1>📊 Usage &amp; Billing</h1><p>Compute usage, invoices, and billing settings.</p></div></div></div></div>
       <div class="page" id="page-settings"><div class="page-scroll"><div class="placeholder-page"><div class="placeholder-center"><h1>⚙️ Settings</h1><p>Account and workspace settings.</p></div></div></div></div>
     </main>
   </div>
 
-  <!-- Popovers -->
-  <div class="popover-overlay" id="popoverOverlay">
-    <div class="popover" id="popoverContent"></div>
-  </div>
+  <!-- Popover / Modal -->
+  <div class="popover-overlay" id="popoverOverlay"><div class="popover" id="popoverContent"></div></div>
+  <!-- Notification Modal -->
+  <div class="popover-overlay" id="notifModal"><div class="popover notif-popover" id="notifModalContent"><h3>🔔 Notifications</h3><div id="notifList"><p>No notifications yet.</p></div><button class="btn-primary pop-close" onclick="closeNotifModal()">Close</button></div></div>
 
   <script src="app.js"></script>
 </body>
